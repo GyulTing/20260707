@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class Loop_20260708 : MonoBehaviour
@@ -33,6 +34,54 @@ public class Loop_20260708 : MonoBehaviour
     //    변수만 100으로 바꿨을때, 피라미드가 완성되면 됨
     private void Start()
     {
+        int Sum = 0;
+        for (int y = 1; y <= 9; ++y) 
+        {
+            for (int x = 1; x <= 9; ++x)
+            {
+                {
+                    Sum = y * x;
+                    Debug.Log(y + " X "+ x + " = " + Sum);
+                }
+            }
+        }
 
+        Debug.Log("-----------------------------------");
+
+        for (int y = 1; y <= 6; ++y)
+        {
+            for(int x = 1; x<=5; ++x)
+            {
+                int Mine = 0;
+                int Count = 0;
+                if (Mine == 14 || Mine == 19 || Mine == 28)
+                {
+                    Debug.Log(Mine + "지역에 지뢰 발견!!");
+                    ++Count;
+                }
+                else if (Count == 3)
+                {
+                    Debug.Log("모든 지뢰를 찾았습니다!!!");
+                    break;
+                }
+                else
+                {
+                    Debug.Log(Mine + "지역에 지뢰를 찾는중....");
+                }
+            }
+        }
+
+        Debug.Log("-----------------------------------");
+
+        int Pyramid = 5;
+        int Count2 = 1;
+        for (int y = 1; y <= Pyramid; ++y)
+        {
+            for (int x = 1; x <= Count2; ++x)
+            {
+               Debug.Log("*");
+                ++Count2;
+            }
+        }
     }
 }
