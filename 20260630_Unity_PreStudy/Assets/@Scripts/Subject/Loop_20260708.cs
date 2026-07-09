@@ -31,33 +31,39 @@ public class Loop_20260708 : MonoBehaviour
     // *****
     // 1. Debug.log 쓰면 안됨
     // 2. 내가 100층짜리 피라미드를 만들고 싶을때
-    //    변수만 100으로 바꿨을때, 피라미드가 완성되면 됨
-    private void Start()
+    //변수만 100으로 바꿨을때, 피라미드가 완성되면 됨
+
+    //
+    // 내가푼거
+    //
+
+    /*private void Start()
     {
         int Sum = 0;
-        for (int y = 1; y <= 9; ++y) 
+        for (int y = 1; y <= 9; ++y)
         {
             for (int x = 1; x <= 9; ++x)
             {
                 {
                     Sum = y * x;
-                    Debug.Log(y + " X "+ x + " = " + Sum);
+                    Debug.Log(y + " X " + x + " = " + Sum);
                 }
             }
         }
 
         Debug.Log("-----------------------------------");
 
-        for (int y = 1; y <= 6; ++y)
+        int Mine = 0;
+        int Count = 0;
+        for (int y = 0; y <= 6; ++y)
         {
-            for(int x = 1; x<=5; ++x)
+            for (int x = 0; x <= 5; ++x)
             {
-                int Mine = 0;
-                int Count = 0;
                 if (Mine == 14 || Mine == 19 || Mine == 28)
                 {
                     Debug.Log(Mine + "지역에 지뢰 발견!!");
-                    ++Count;
+                    Mine += 1;
+                    Count += 1;
                 }
                 else if (Count == 3)
                 {
@@ -67,20 +73,108 @@ public class Loop_20260708 : MonoBehaviour
                 else
                 {
                     Debug.Log(Mine + "지역에 지뢰를 찾는중....");
+                    ++Mine;
                 }
             }
         }
 
         Debug.Log("-----------------------------------");
 
-        int Pyramid = 5;
-        int Count2 = 1;
-        for (int y = 1; y <= Pyramid; ++y)
+         int Pyramid = 5;
+         for (int y = 1; y <= Pyramid; ++y)
+         {
+             for (int x = 0; x <= y; ++x)
+             {
+                Debug.Log("*");
+             }
+            Debug.Log(" ");
+         }
+    }*/
+
+    private void Start()
+    {
+        //강사님 풀이
+        // 1. 구구단 만들기 
+        // 1단부터 9단까지 구구단이 출력되도록 해보세요
+        // 출력예시
+        // 1단------
+        // 1 x 1 = 1
+        // 1 x 2 = 2
+        // 1 x 3 = 3
+        // ....
+        // 1 x 9 = 9
+        // 2단------
+        // 2 x 1 = 2
+        // ....
+
+        //1단을 풀어야한다
+        // 1단------
+        // 1 x 1 = 1
+        // 1 x 2 = 2
+        // 1 x 3 = 3
+        // ....
+        // 1단이면 1이라는 숫자가 고정임
+        // 1에 곱해지는 수를 보면, 1~9 까지 1씩 증가하면 될거같음
+        // 결과는 1과 1~9까지의 수를 곱한 결과임
+
+        // 1 을 고정해두고 1~9까지의 수를 반복하면서 곱해줄 로직이 필요함
+        // x = 1, y = 1
+        // x = 1, y = 2
+        // .....
+        // x = 1, y = 9
+
+        // 이중 반복문을 쓰면 해결이 될거같음 
+
+        int Num = 11;
+        for (int i = 1; i <= Num; ++i)
         {
-            for (int x = 1; x <= Count2; ++x)
+            Debug.Log(i + "단-----------");
+            for (int j = 1; j <= 9; ++j)
             {
-               Debug.Log("*");
-                ++Count2;
+                Debug.Log(i + " X " + j + " = " + i * j);
+            }
+        }
+
+        // 2. 지뢰찾기
+        // 가로 6칸 세로 5칸 인 지뢰판이 있다고 가정함 
+        // 14번째, 19번째, 28번째 칸에 지뢰가 있다고 가정함
+        // 지뢰가 총 3개이고, 3개의 지뢰를 모두 발견하면 게임 중단
+        // 매칸 확일할때마다 xx칸 확인중... 을 출력
+        // 지뢰를 찾을때 마다, "**칸에 있는 지뢰를 확인 완료!" 를 출력 하면됨
+
+        // [ ] [ ] [ ] [ ] [ ] [ ]
+        // [ ] [ ] [ ] [ ] [ ] [ ]
+        // [ ] [X] [ ] [ ] [ ] [ ]
+        // [X] [ ] [ ] [ ] [ ] [ ]
+        // [ ] [ ] [ ] [ ] [X] [ ]
+        // 14, 19, 28
+        // 지뢰를 3개를 모두 찾으면 게임 종료
+        // 매칸 확인할때 마다 xx칸 확인중
+        // 지뢰를 찾으면 **칸에 있는 지뢰 확인완료
+        // 1. 일단 지뢰를 확인해볼려면 모든 칸을 돌아봐야함
+        // - 2증 반복문을 써서 해결하면됨
+
+        //2. 모든 칸을 들여다보는건 완료를 했음
+        // - 칸을 들여다보고 있는데, 만약에, 지뢰가 있는 칸이라면
+        //   지뢰를 확인했다 라고 출력하면 됨
+
+        int TotalMine = 3;
+        int FindedMineCount = 0;
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 6; ++j)
+            {
+                int CurrentStep = i * 6 + j;
+                Debug.Log(CurrentStep + "칸 확인중....");
+                if (CurrentStep == 14 || CurrentStep == 19 || CurrentStep == 28)
+                {
+                    ++FindedMineCount;
+                    Debug.Log(CurrentStep + "번째 칸은 지뢰였습니다.");
+                    if (FindedMineCount == TotalMine)
+                    {
+                        break;
+                    }
+                }
             }
         }
     }
