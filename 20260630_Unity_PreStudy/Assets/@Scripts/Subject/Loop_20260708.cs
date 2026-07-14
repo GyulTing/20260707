@@ -125,6 +125,7 @@ public class Loop_20260708 : MonoBehaviour
 
         // 이중 반복문을 쓰면 해결이 될거같음 
 
+
         int Num = 11;
         for (int i = 1; i <= Num; ++i)
         {
@@ -177,5 +178,33 @@ public class Loop_20260708 : MonoBehaviour
                 }
             }
         }
+
+        // 3. star Pyramid
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        // 1. Debug.log 쓰면 안됨
+        // 2. 내가 100층짜리 피라미드를 만들고 싶을때
+        //변수만 100으로 바꿨을때, 피라미드가 완성되면 
+
+        //string 변수를 하나 만들어서 별을 조합함
+        //반복이 일어날때마다, string 변수에다가
+        //*을 추가로 붙여줌
+
+        string Star = "";
+        int Pyramid = 5;
+        for (int i = 0; i < Pyramid; ++i) 
+        {
+            for (int j = 0; j < i + 1; ++j) 
+            {
+                Star += "*";
+            }
+            Debug.Log(Star);
+            Star = "";
+        }
+
+
     }
 }
