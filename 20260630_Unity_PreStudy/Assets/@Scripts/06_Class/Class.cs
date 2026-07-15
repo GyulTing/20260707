@@ -131,6 +131,7 @@ public class Class : MonoBehaviour
         // 또한, monitor가 고장났다면 monitor 가 고장났다면 monitor 클래스만 확인하면 됨
         // 이러한 특징을 "캡슐화" 라고 함
     }
+
 }
 
 class Monitor // 모니터 분류(Class)
