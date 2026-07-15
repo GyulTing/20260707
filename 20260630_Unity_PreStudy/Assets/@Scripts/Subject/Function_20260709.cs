@@ -97,6 +97,7 @@ public class Function_20260709 : MonoBehaviour
 
     bool IsMultipleofThree(int score)
     {
+        // 지역 변수 (Loacl variables)
         bool Result = false;
         if (score % 3 == 0)
         {
